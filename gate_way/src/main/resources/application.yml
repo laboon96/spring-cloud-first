@@ -1,0 +1,24 @@
+#Application configurations
+server:
+  port: 9000
+spring:
+  application:
+    name: gate-way
+
+#Eureka config
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+ribbon:
+  eureka:
+    enabled: false
+#Zuul Config
+zuul:
+  routes:
+    user-service:
+      path: /users/**
+      service-id: user-service
+    wallet-service:
+      path: /wallets/**
+      service-id: wallet-service
