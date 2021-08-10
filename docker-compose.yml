@@ -1,0 +1,57 @@
+services:
+  service-discovery:
+    image: service-discovery:latest
+    container_name: service-discovery
+    ports:
+      - 8761:8761
+
+  gate-way:
+    image: gate-way:latest
+    container_name: gate-way
+    ports:
+      - 9000:9000
+    depends_on:
+      - service_discovery
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8761/eureka/
+
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: nlhminh
+      MYSQL_PASSWORD: 123456
+
+  user-service:
+    image: user-service:latest
+    container_name: user-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - service-discovery
+      - gate-way
+      - mysql-db
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8761/eureka/
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql-db:3306/users_data?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: admin
+
+  wallet-service:
+    image: wallet-service:latest
+    container_name: wallet-service
+    ports:
+      - 8090:8090
+    depends_on:
+      - service-discovery
+      - gate-way
+      - mysql-db
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://service-discovery:8761/eureka/
+      SPRING.DATASOURCE.URL: jdbc:mysql://mysql-db:3306/wallets_data?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: admin
+

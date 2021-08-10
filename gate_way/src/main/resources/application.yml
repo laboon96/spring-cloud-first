@@ -4,21 +4,22 @@ server:
 spring:
   application:
     name: gate-way
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+        - id: wallet-service
+          uri: lb://WALLET-SERVICE
+          predicates:
+            - Path=/wallets/**
 
 #Eureka config
 eureka:
   client:
     serviceUrl:
+      fetchRegistry: true
       defaultZone: http://localhost:8761/eureka
-ribbon:
-  eureka:
-    enabled: false
-#Zuul Config
-zuul:
-  routes:
-    user-service:
-      path: /users/**
-      service-id: user-service
-    wallet-service:
-      path: /wallets/**
-      service-id: wallet-service
+    register-with-eureka: true

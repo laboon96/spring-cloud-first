@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../gate_way/gate_way.iml" filepath="$PROJECT_DIR$/../gate_way/gate_way.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../service_discovery/service_discovery.iml" filepath="$PROJECT_DIR$/../service_discovery/service_discovery.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../user_service/user_service.iml" filepath="$PROJECT_DIR$/../user_service/user_service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../wallet_service/wallet_service.iml" filepath="$PROJECT_DIR$/../wallet_service/wallet_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gate_way/gate_way.iml" filepath="$PROJECT_DIR$/gate_way/gate_way.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service_discovery/service_discovery.iml" filepath="$PROJECT_DIR$/service_discovery/service_discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user_service/user_service.iml" filepath="$PROJECT_DIR$/user_service/user_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet_service/wallet_service.iml" filepath="$PROJECT_DIR$/wallet_service/wallet_service.iml" />
     </modules>
   </component>
 </project>
