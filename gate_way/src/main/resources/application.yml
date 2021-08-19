@@ -4,17 +4,6 @@ server:
 spring:
   application:
     name: gate-way
-  cloud:
-    gateway:
-      routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/users/**
-        - id: wallet-service
-          uri: lb://WALLET-SERVICE
-          predicates:
-            - Path=/wallets/**
 
 #Eureka config
 eureka:
@@ -23,3 +12,9 @@ eureka:
       fetchRegistry: true
       defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
+
+okta:
+  oauth2:
+    issuer: https://dev-5360644.okta.com/oauth2/default
+    client-id: 0oa1hbh6cs8RB1G3g5d7
+    client-secret: 7X5QC1Ktu7xyPg60fVJA5wBovpxYkvYvvzgn5mb8
