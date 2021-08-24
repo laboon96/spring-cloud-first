@@ -20,8 +20,6 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_USER: nlhminh
-      MYSQL_PASSWORD: 123456
     healthcheck:
       test: "exit 0"
       interval: 15s
